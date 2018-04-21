@@ -7,21 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-import model.Conta;
+import model.Transacao;
 
-public class ContaDao {
+public class TransacaoDao {
 	//Atributo
 	private Connection conexao;
 		
 	//metodo construtor
-	public ContaDao(Connection conexao) {
+	public TransacaoDao(Connection conexao) {
 			this.conexao = conexao;
 	}
 	
 	//Detalhar conta do cliente
-	public ArrayList<Conta> getContas(int idCliente){
+	public ArrayList<Transacao> getTransacaos(int idConta){
 		
-		ArrayList<Conta> resultado = new ArrayList<Conta>();
+		ArrayList<Transacao> resultado = new ArrayList<Transacao>();
 		
 		
 		//Instanciar os objetos
@@ -32,14 +32,14 @@ public class ContaDao {
 		//Dethalar Contas do cliente
 		try {
 			//Prepara o sql
-			ps = conexao.prepareStatement("SELECT idconta, idcliente, numeroconta, agenciaconta, tipoconta FROM conta WHERE idcliente = ?");
+			ps = conexao.prepareStatement("SELECT * FROM transacao WHERE idconta = ?");
 			//setar os parametro sql
-			ps.setInt(1, idCliente);
+			ps.setInt(1, idConta);
 			
 			//executar o SQL
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				resultado.add(new Conta(rs.getInt("idConta"), rs.getInt("idCliente"), rs.getString("numeroConta"),  rs.getString("agenciaConta"), rs.getString("tipoConta")));	
+				resultado.add(new Transacao(rs.getInt("idtransacao"), rs.getInt("idconta"), rs.getDate("datatransacao"),  rs.getString("tipotransacoa"), rs.getString("valortransacao")));	
 			}
 			
 			rs.close();

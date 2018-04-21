@@ -44,7 +44,7 @@ public class DethalarConta extends HttpServlet {
 		//instanciar objeto ClienteDAO
 		ContaDao cd = new ContaDao(conexao);
 		
-		ArrayList<Conta> contas = cd.getconta(c.getIdCliente());
+		ArrayList<Conta> contas = cd.getContas(c.getIdCliente());
 		
 		request.setAttribute("detalhes", contas);
 		

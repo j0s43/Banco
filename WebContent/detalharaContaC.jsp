@@ -6,9 +6,9 @@
     <%@ page import="model.Conta" %>
     <%@ page import="java.util.ArrayList" %>
 
-<% ArrayList<Conta> contas = (ArrayList<Conta>)request.getAttribute("detalhes"); %>
-
-<% Cliente c1 = (Cliente)request.getAttribute("cliente"); %>
+	<% ArrayList<Conta> contas = (ArrayList<Conta>)request.getAttribute("detalhes"); %>
+	
+	<% Cliente c1 = (Cliente)request.getAttribute("cliente"); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,13 +19,14 @@
 <body>
 <h1>Bem-vindo  <%= c1.getNomeCliente() %>!</h1>
 
-
-  <% for(int i = 0; i < contas.size(); i++){%>
-	  
-	  <%= contas.get(i).getNumeroConta() + " " + contas.get(i).getAgenciaConta() + " " + contas.get(i).getTipoConta()  %><br/>
+<table>
+  <% for(int i = 0; i <contas.size(); i++){%>
+  
+	 <tr><a href="detalharTransacao?idconta=<%=contas.get(i).getIdConta()%>&numerodaconta=<%= contas.get(i).getNumeroConta() %>&agenciaconta=<%= contas.get(i).getAgenciaConta() %>&tipoconta=<%= contas.get(i).getTipoConta() %>&idcliente=<%= contas.get(i).getIdCliente() %>"><%= contas.get(i).getNumeroConta() %></a></tr><br/>
 	  
  <% } %>
 
+</table>
 
 </body>
 </html>
