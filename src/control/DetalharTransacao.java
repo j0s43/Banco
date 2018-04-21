@@ -35,7 +35,11 @@ public class DetalharTransacao extends HttpServlet {
 			throws ServletException, IOException {
 		
 		int idconta = Integer.parseInt(request.getParameter("idconta"));
-		
+		int idcliente = Integer.parseInt(request.getParameter("idcliente"));
+		String numeroconta = request.getParameter("numeroconta");
+		String agenciaconta= request.getParameter("agenciaconta");
+		String tipoconta = request.getParameter("tipoconta"); 
+				
 		// Obter uma conexao com o BD
 		Connection conexao = Conexao.getConexao();
 
