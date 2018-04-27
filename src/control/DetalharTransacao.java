@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Conexao;
 import dao.TransacaoDao;
+import model.Cliente;
 import model.Transacao;
 
 /**
@@ -39,6 +40,8 @@ public class DetalharTransacao extends HttpServlet {
 		String numeroconta = request.getParameter("numeroconta");
 		String agenciaconta= request.getParameter("agenciaconta");
 		String tipoconta = request.getParameter("tipoconta"); 
+		String nomecliente = request.getParameter("nomecliente");
+		String cpfcliente = request.getParameter("cpfcliente");
 				
 		// Obter uma conexao com o BD
 		Connection conexao = Conexao.getConexao();
@@ -47,8 +50,14 @@ public class DetalharTransacao extends HttpServlet {
 		TransacaoDao cd = new TransacaoDao(conexao);
 
 		ArrayList<Transacao> transacaos = cd.getTransacaos(idconta);
-
+		
+		//criar um atributo novo
 		request.setAttribute("paga", transacaos);
+		request.setAttribute("nome", nomecliente);
+		request.setAttribute("cpf", cpfcliente);
+		request.setAttribute("numero", numeroconta);
+		request.setAttribute("agencia", agenciaconta);
+		request.setAttribute("tipo", tipoconta);
 
 		RequestDispatcher rd = request.getRequestDispatcher("transacao.jsp");
 		rd.forward(request, response);

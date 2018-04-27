@@ -21,10 +21,14 @@
 
 <table>
   <% for(int i = 0; i <contas.size(); i++){%>
-  
-	 <tr><a href="detalharTransacao?idconta=<%=contas.get(i).getIdConta()%>&numerodaconta=<%= contas.get(i).getNumeroConta() %>&agenciaconta=<%= contas.get(i).getAgenciaConta() %>&tipoconta=<%= contas.get(i).getTipoConta() %>&idcliente=<%= contas.get(i).getIdCliente() %>"><%= contas.get(i).getNumeroConta() %></a></tr><br/>
+
+	 <tr><a href="detalharTransacao?idconta=<%=contas.get(i).getIdConta()%>&numeroconta=<%= contas.get(i).getNumeroConta() %>&agenciaconta=<%= contas.get(i).getAgenciaConta() %>&tipoconta=<%= contas.get(i).getTipoConta() %>&idcliente=<%= contas.get(i).getIdCliente() %>&nomecliente=<%= c1.getNomeCliente() %>&cpfcliente=<%= c1.getCpfCliente() %>"><%= contas.get(i).getNumeroConta() %></a></tr><br/>
 	  
- <% } %>
+ <% } 
+ 
+  
+ 
+ %>
 
 </table>
 
